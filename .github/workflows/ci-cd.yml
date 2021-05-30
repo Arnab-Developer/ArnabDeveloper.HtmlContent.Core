@@ -9,7 +9,7 @@ on:
     types: [ created ]
 
 env:
-  DOTNET_VERSION: 5.0.101
+  DOTNET_VERSION: 5.0.300
   CONFIGURATION: Release
 
 jobs:
@@ -18,15 +18,18 @@ jobs:
     name: Build and test
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2      
+      uses: actions/checkout@v2 
+      
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: ${{ env.DOTNET_VERSION }}     
+        dotnet-version: ${{ env.DOTNET_VERSION }} 
+        
     - name: Build
-      run: dotnet build ArnabDeveloper.HttpHealthCheck/ArnabDeveloper.HttpHealthCheck.csproj --configuration ${{ env.CONFIGURATION }}
+      run: dotnet build --configuration ${{ env.CONFIGURATION }}
+
     - name: Test
-      run: dotnet test ArnabDeveloper.HttpHealthCheck.Test/ArnabDeveloper.HttpHealthCheck.Test.csproj --configuration ${{ env.CONFIGURATION }}
+      run: dotnet test --configuration ${{ env.CONFIGURATION }}
 
   github-nuget-push:
     if: ${{ github.event_name == 'push' || github.event_name == 'release' }}
