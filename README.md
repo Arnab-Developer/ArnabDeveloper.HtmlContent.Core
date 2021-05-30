@@ -1,21 +1,18 @@
-# .NET async await demo
+# HTML content
 
-A demo WPF application for async await with .NET
+It takes a collection of HTTP URLs and returns HTML responses of them. Internally
+it used `System.Net.WebClient` to get the HTML response of the URLs.
 
-## Use cases
+There are five methods to get the HTML responses.
 
-This application send request to http web addresses and download the response as 
-string. There are five use cases.
+- `GetContent()` to get HTML responses synchronously
+- `GetContentAsync()` to get HTML responses asynchronously
+- `GetContentParallelAsync` to get HTML responses asynchronously in parallel
+- `GetContentParallelAsyncV2()` to get HTML responses asynchronously in parallel 
+with `Parallel.ForEach()`
+- `GetContentParallelAsyncV2WithProgress()` to get HTML responses asynchronously 
+in parallel with `Parallel.ForEach()` with progressbar and show result as they are 
+available
 
-- Download string synchronously (normal)
-- Download string asynchronously
-- Download string asynchronously in parallel
-- Download string asynchronously in parallel with `Parallel.ForEach()`
-- Download string asynchronously in parallel with `Parallel.ForEach()` with
-progressbar and show result as they are available
-
-![Screenshot](https://github.com/Arnab-Developer/AsyncAwaitDemo/blob/main/Assets/Screenshot.png)
-
-## Detail tutorial
-
+This is influenced by
 [C# Advanced Async by TimCorey](https://www.youtube.com/watch?v=ZTKGRJy5P2M)
