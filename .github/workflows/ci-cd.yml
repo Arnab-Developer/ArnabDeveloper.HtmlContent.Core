@@ -60,7 +60,7 @@ jobs:
     needs: build-test
     name: nuget org push
     environment:
-      name: "nuget"
+      name: "NuGetEnv"
       url: "https://www.nuget.org/packages/ArnabDeveloper.HtmlContent.Core"
     steps:
     - name: Checkout code
