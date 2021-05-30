@@ -34,14 +34,14 @@ namespace ArnabDeveloper.HtmlContent.Core.Services
             List<WebSiteDataModel> webSiteDataModels = new();
             foreach (string url in ((IHtmlContentService)this).Urls)
             {
-                WebSiteDataModel webSiteDataModel = DownloadNormal(url);
+                WebSiteDataModel webSiteDataModel = DownloadString(url);
                 webSiteDataModels.Add(webSiteDataModel);
             }
             return webSiteDataModels;
         }
 
         /// <summary>
-        /// Same time took as RunDownloadNormal but do not block the UI thread.
+        /// Same time took as GetContent() but do not block the UI thread.
         /// </summary>
         async Task<IEnumerable<WebSiteDataModel>> IHtmlContentService.GetContentAsync()
         {
@@ -53,14 +53,14 @@ namespace ArnabDeveloper.HtmlContent.Core.Services
             List<WebSiteDataModel> webSiteDataModels = new();
             foreach (string url in ((IHtmlContentService)this).Urls)
             {
-                WebSiteDataModel webSiteDataModel = await DownloadAsync(url);
+                WebSiteDataModel webSiteDataModel = await DownloadStringTaskAsync(url);
                 webSiteDataModels.Add(webSiteDataModel);
             }
             return webSiteDataModels;
         }
 
         /// <summary>
-        /// Much faster than RunDownloadNormal and RunDownloadAsync because 
+        /// Much faster than GetContent() and GetContentAsync() because 
         /// works in parallel and do not block the UI thread.
         /// </summary>
         async Task<IEnumerable<WebSiteDataModel>> IHtmlContentService.GetContentParallelAsync()
@@ -73,7 +73,7 @@ namespace ArnabDeveloper.HtmlContent.Core.Services
             List<Task<WebSiteDataModel>> tasks = new();
             foreach (string url in ((IHtmlContentService)this).Urls)
             {
-                Task<WebSiteDataModel> t = DownloadAsync(url);
+                Task<WebSiteDataModel> t = DownloadStringTaskAsync(url);
                 tasks.Add(t);
             }
             WebSiteDataModel[] webSiteDataModels = await Task.WhenAll(tasks);
@@ -82,7 +82,7 @@ namespace ArnabDeveloper.HtmlContent.Core.Services
 
         /// <summary>
         /// Do not block the UI thread because it is inside Task.Run() otherwise
-        /// it block UI thread. Same fast as RunDownloadParallelAsync because it
+        /// it block UI thread. Same fast as GetContentParallelAsync() because it
         /// works in parallel. Async operation inside Parallel.ForEach() is not 
         /// wait the UI thread. So normal method needs to be used inside 
         /// Parallel.ForEach().
@@ -99,7 +99,7 @@ namespace ArnabDeveloper.HtmlContent.Core.Services
             // Wait UI thread
             await Task.Run(() => Parallel.ForEach(((IHtmlContentService)this).Urls, url =>
             {
-                WebSiteDataModel webSiteDataModel = DownloadNormal(url);
+                WebSiteDataModel webSiteDataModel = DownloadString(url);
                 webSiteDataModels.Add(webSiteDataModel);
             }));
 
@@ -114,7 +114,7 @@ namespace ArnabDeveloper.HtmlContent.Core.Services
         }
 
         /// <summary>
-        /// Same as RunDownloadParallelV2Async() but with progress notification.
+        /// Same as GetContentParallelAsyncV2() but with progress notification.
         /// </summary>
         async Task<IEnumerable<WebSiteDataModel>> IHtmlContentService.GetContentParallelAsyncV2WithProgress(
             IProgress<ProgressDataModel> progress)
@@ -128,7 +128,7 @@ namespace ArnabDeveloper.HtmlContent.Core.Services
 
             await Task.Run(() => Parallel.ForEach(((IHtmlContentService)this).Urls, url =>
             {
-                WebSiteDataModel webSiteDataModel = DownloadNormal(url);
+                WebSiteDataModel webSiteDataModel = DownloadString(url);
                 webSiteDataModels.Add(webSiteDataModel);
 
                 int progressPercentage = webSiteDataModels.Count * 100 / ((IHtmlContentService)this).Urls.Count;
@@ -139,14 +139,14 @@ namespace ArnabDeveloper.HtmlContent.Core.Services
             return webSiteDataModels;
         }
 
-        private WebSiteDataModel DownloadNormal(string url)
+        private WebSiteDataModel DownloadString(string url)
         {
             using WebClient webClient = new();
             WebSiteDataModel webSiteDataModel = new(url, webClient.DownloadString(url));
             return webSiteDataModel;
         }
 
-        private async Task<WebSiteDataModel> DownloadAsync(string url)
+        private async Task<WebSiteDataModel> DownloadStringTaskAsync(string url)
         {
             using WebClient webClient = new();
             WebSiteDataModel webSiteDataModel = new(url, await webClient.DownloadStringTaskAsync(url));
