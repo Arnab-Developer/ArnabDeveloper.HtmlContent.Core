@@ -1,6 +1,7 @@
 ﻿using ArnabDeveloper.HtmlContent.Core.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
@@ -25,6 +26,11 @@ namespace ArnabDeveloper.HtmlContent.Core.Services
         /// </summary>
         IEnumerable<WebSiteDataModel> IHtmlContentService.GetContent()
         {
+            if (!((IHtmlContentService)this).Urls.Any())
+            {
+                throw new ArgumentException("Url collection is empty");
+            }
+
             List<WebSiteDataModel> webSiteDataModels = new();
             foreach (string url in ((IHtmlContentService)this).Urls)
             {
@@ -39,6 +45,11 @@ namespace ArnabDeveloper.HtmlContent.Core.Services
         /// </summary>
         async Task<IEnumerable<WebSiteDataModel>> IHtmlContentService.GetContentAsync()
         {
+            if (!((IHtmlContentService)this).Urls.Any())
+            {
+                throw new ArgumentException("Url collection is empty");
+            }
+
             List<WebSiteDataModel> webSiteDataModels = new();
             foreach (string url in ((IHtmlContentService)this).Urls)
             {
@@ -54,6 +65,11 @@ namespace ArnabDeveloper.HtmlContent.Core.Services
         /// </summary>
         async Task<IEnumerable<WebSiteDataModel>> IHtmlContentService.GetContentParallelAsync()
         {
+            if (!((IHtmlContentService)this).Urls.Any())
+            {
+                throw new ArgumentException("Url collection is empty");
+            }
+
             List<Task<WebSiteDataModel>> tasks = new();
             foreach (string url in ((IHtmlContentService)this).Urls)
             {
@@ -73,6 +89,11 @@ namespace ArnabDeveloper.HtmlContent.Core.Services
         /// </summary>
         async Task<IEnumerable<WebSiteDataModel>> IHtmlContentService.GetContentParallelAsyncV2()
         {
+            if (!((IHtmlContentService)this).Urls.Any())
+            {
+                throw new ArgumentException("Url collection is empty");
+            }
+
             List<WebSiteDataModel> webSiteDataModels = new();
 
             // Wait UI thread
@@ -99,6 +120,11 @@ namespace ArnabDeveloper.HtmlContent.Core.Services
         async Task<IEnumerable<WebSiteDataModel>> IHtmlContentService.GetContentParallelAsyncV2WithProgress(
             IProgress<ProgressDataModel> progress)
         {
+            if (!((IHtmlContentService)this).Urls.Any())
+            {
+                throw new ArgumentException("Url collection is empty");
+            }
+
             List<WebSiteDataModel> webSiteDataModels = new();
 
             await Task.Run(() => Parallel.ForEach(((IHtmlContentService)this).Urls, url =>

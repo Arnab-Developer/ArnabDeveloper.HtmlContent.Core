@@ -25,11 +25,25 @@ namespace ArnabDeveloper.HtmlContent.CoreTests
         }
 
         [Fact]
+        public void Can_GetContent_ThrowExceptionIfUrlIsEmpty()
+        {
+            ArgumentException ex = Assert.Throws<ArgumentException>(() => _htmlContentService.GetContent());
+            Assert.Equal("Url collection is empty", ex.Message);
+        }
+
+        [Fact]
         public async void Can_GetContentAsync_ReturnProperData()
         {
             AddUrls();
             IEnumerable<WebSiteDataModel> webSiteDataModels = await _htmlContentService.GetContentAsync();
             CheckResults(webSiteDataModels);
+        }
+
+        [Fact]
+        public async void Can_GetContentAsync_ThrowExceptionIfUrlIsEmpty()
+        {
+            ArgumentException ex = await Assert.ThrowsAsync<ArgumentException>(() => _htmlContentService.GetContentAsync());
+            Assert.Equal("Url collection is empty", ex.Message);
         }
 
         [Fact]
@@ -41,11 +55,25 @@ namespace ArnabDeveloper.HtmlContent.CoreTests
         }
 
         [Fact]
+        public async void Can_GetContentParallelAsync_ThrowExceptionIfUrlIsEmpty()
+        {
+            ArgumentException ex = await Assert.ThrowsAsync<ArgumentException>(() => _htmlContentService.GetContentParallelAsync());
+            Assert.Equal("Url collection is empty", ex.Message);
+        }
+
+        [Fact]
         public async void Can_GetContentParallelAsyncV2_ReturnProperData()
         {
             AddUrls();
             IEnumerable<WebSiteDataModel> webSiteDataModels = await _htmlContentService.GetContentParallelAsyncV2();
             CheckResults(webSiteDataModels);
+        }
+
+        [Fact]
+        public async void Can_GetContentParallelAsyncV2_ThrowExceptionIfUrlIsEmpty()
+        {
+            ArgumentException ex = await Assert.ThrowsAsync<ArgumentException>(() => _htmlContentService.GetContentParallelAsyncV2());
+            Assert.Equal("Url collection is empty", ex.Message);
         }
 
         [Fact]
@@ -61,6 +89,15 @@ namespace ArnabDeveloper.HtmlContent.CoreTests
             IEnumerable<WebSiteDataModel> webSiteDataModels =
                 await _htmlContentService.GetContentParallelAsyncV2WithProgress(progress);
             CheckResults(webSiteDataModels);
+        }
+
+        [Fact]
+        public async void Can_GetContentParallelAsyncV2WithProgress_ThrowExceptionIfUrlIsEmpty()
+        {
+            Progress<ProgressDataModel> progress = new();
+            ArgumentException ex = await Assert.ThrowsAsync<ArgumentException>(
+                () => _htmlContentService.GetContentParallelAsyncV2WithProgress(progress));
+            Assert.Equal("Url collection is empty", ex.Message);
         }
 
         private void AddUrls()
