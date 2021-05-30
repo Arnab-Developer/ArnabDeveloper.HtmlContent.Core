@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ArnabDeveloper.AsyncAwaitDemo.Core\ArnabDeveloper.AsyncAwaitDemo.Core.csproj" />
+    <ProjectReference Include="..\ArnabDeveloper.HtmlContent.Core\ArnabDeveloper.HtmlContent.Core.csproj" />
   </ItemGroup>
 
 </Project>

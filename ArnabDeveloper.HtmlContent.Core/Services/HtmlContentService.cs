@@ -1,10 +1,10 @@
-﻿using ArnabDeveloper.AsyncAwaitDemo.Core.Models;
+﻿using ArnabDeveloper.HtmlContent.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace ArnabDeveloper.AsyncAwaitDemo.Core.Services
+namespace ArnabDeveloper.HtmlContent.Core.Services
 {
     public class HtmlContentService : IHtmlContentService
     {

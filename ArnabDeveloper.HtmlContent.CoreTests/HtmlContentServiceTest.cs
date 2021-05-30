@@ -1,11 +1,11 @@
-using ArnabDeveloper.AsyncAwaitDemo.Core.Models;
-using ArnabDeveloper.AsyncAwaitDemo.Core.Services;
+using ArnabDeveloper.HtmlContent.Core.Models;
+using ArnabDeveloper.HtmlContent.Core.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
-namespace ArnabDeveloper.AsyncAwaitDemo.CoreTests
+namespace ArnabDeveloper.HtmlContent.CoreTests
 {
     public class HtmlContentServiceTest
     {
@@ -55,7 +55,8 @@ namespace ArnabDeveloper.AsyncAwaitDemo.CoreTests
             Progress<ProgressDataModel> progress = new(progressDataModel =>
             {
                 Assert.True(progressDataModel.ProgressValue != 0);
-                Assert.True(progressDataModel.Data.WebsiteData.Length != 0);
+                Assert.NotNull(progressDataModel.Data);
+                Assert.True(progressDataModel.Data!.WebsiteData.Length != 0);
             });
             IEnumerable<WebSiteDataModel> webSiteDataModels =
                 await _htmlContentService.GetContentParallelAsyncV2WithProgress(progress);

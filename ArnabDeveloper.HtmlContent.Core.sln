@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArnabDeveloper.AsyncAwaitDemo.Core", "ArnabDeveloper.AsyncAwaitDemo.Core\ArnabDeveloper.AsyncAwaitDemo.Core.csproj", "{7A9908F3-42BF-4EED-B678-670CFDBDC297}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArnabDeveloper.HtmlContent.Core", "ArnabDeveloper.HtmlContent.Core\ArnabDeveloper.HtmlContent.Core.csproj", "{7A9908F3-42BF-4EED-B678-670CFDBDC297}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArnabDeveloper.AsyncAwaitDemo.CoreTests", "ArnabDeveloper.AsyncAwaitDemo.CoreTests\ArnabDeveloper.AsyncAwaitDemo.CoreTests.csproj", "{9A13C980-D000-45D7-B52F-CCC3D51150A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArnabDeveloper.HtmlContent.CoreTests", "ArnabDeveloper.HtmlContent.CoreTests\ArnabDeveloper.HtmlContent.CoreTests.csproj", "{9A13C980-D000-45D7-B52F-CCC3D51150A3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3840B2C6-99E8-4B4B-BD37-E057F6E0DA36}"
 	ProjectSection(SolutionItems) = preProject
