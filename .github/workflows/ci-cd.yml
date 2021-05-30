@@ -61,7 +61,7 @@ jobs:
     name: nuget org push
     environment:
       name: "nuget"
-      url: "https://www.nuget.org/packages/ArnabDeveloper.HttpHealthCheck"
+      url: "https://www.nuget.org/packages/ArnabDeveloper.HtmlContent.Core"
     steps:
     - name: Checkout code
       uses: actions/checkout@v2 
