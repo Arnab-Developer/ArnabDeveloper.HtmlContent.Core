@@ -1,5 +1,7 @@
 # HTML content
 
+[![CI CD](https://github.com/Arnab-Developer/ArnabDeveloper.HtmlContent.Core/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/Arnab-Developer/ArnabDeveloper.HtmlContent.Core/actions/workflows/ci-cd.yml)
+
 It takes a collection of HTTP URLs and returns HTML responses of them. Internally
 it used `System.Net.WebClient` to get the HTML response of the URLs.
 
