@@ -114,8 +114,7 @@ namespace ArnabDeveloper.HtmlContent.Core.Services
         }
 
         /// <summary>
-        /// Same as RunDownloadParallelV2Async() but with progress bar and it
-        /// show result as they are available.
+        /// Same as RunDownloadParallelV2Async() but with progress notification.
         /// </summary>
         async Task<IEnumerable<WebSiteDataModel>> IHtmlContentService.GetContentParallelAsyncV2WithProgress(
             IProgress<ProgressDataModel> progress)

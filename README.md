@@ -11,8 +11,7 @@ There are five methods to get the HTML responses.
 - `GetContentParallelAsyncV2()` to get HTML responses asynchronously in parallel 
 with `Parallel.ForEach()`
 - `GetContentParallelAsyncV2WithProgress()` to get HTML responses asynchronously 
-in parallel with `Parallel.ForEach()` with progressbar and show result as they are 
-available
+in parallel with `Parallel.ForEach()` with progress notification
 
 This is influenced by
 [C# Advanced Async by TimCorey](https://www.youtube.com/watch?v=ZTKGRJy5P2M)
