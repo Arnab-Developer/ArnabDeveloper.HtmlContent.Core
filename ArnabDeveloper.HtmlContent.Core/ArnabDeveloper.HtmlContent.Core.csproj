@@ -11,7 +11,8 @@
     <PackageProjectUrl>https://github.com/Arnab-Developer/ArnabDeveloper.HtmlContent.Core</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Arnab-Developer/ArnabDeveloper.HtmlContent.Core</RepositoryUrl>
     <PackageTags>async,await,http,html</PackageTags>
-    <PackageReleaseNotes>It takes a collection of http urls and returns html responses of them.</PackageReleaseNotes>
+    <PackageReleaseNotes>Provide NuGet package author info</PackageReleaseNotes>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
 </Project>
