@@ -82,9 +82,7 @@ namespace ArnabDeveloper.HtmlContent.CoreTests
             AddUrls();
             Progress<ProgressDataModel> progress = new(progressDataModel =>
             {
-                Assert.True(progressDataModel.ProgressValue != 0);
-                Assert.NotNull(progressDataModel.Data);
-                Assert.True(progressDataModel.Data!.WebsiteData.Length != 0);
+                CheckProgressResult(progressDataModel);
             });
             IEnumerable<WebSiteDataModel> webSiteDataModels =
                 await _htmlContentService.GetContentParallelAsyncV2WithProgress(progress);
@@ -97,6 +95,31 @@ namespace ArnabDeveloper.HtmlContent.CoreTests
             Progress<ProgressDataModel> progress = new();
             ArgumentException ex = await Assert.ThrowsAsync<ArgumentException>(
                 () => _htmlContentService.GetContentParallelAsyncV2WithProgress(progress));
+            Assert.Equal("Url collection is empty", ex.Message);
+        }
+
+        [Fact]
+        public async void Can_GetContentParallelAsyncV2WithAsyncStream_ReturnProperData()
+        {
+            AddUrls();
+            await foreach (ProgressDataModel progressDataModel in
+                _htmlContentService.GetContentParallelAsyncV2WithAsyncStream())
+            {
+                CheckProgressResult(progressDataModel);
+            }
+        }
+
+        [Fact]
+        public async void Can_GetContentParallelAsyncV2WithAsyncStream_ThrowExceptionIfUrlIsEmpty()
+        {
+            ArgumentException ex = await Assert.ThrowsAsync<ArgumentException>(async () =>
+            {
+                await foreach (ProgressDataModel progressDataModel in
+                    _htmlContentService.GetContentParallelAsyncV2WithAsyncStream())
+                {
+                    CheckProgressResult(progressDataModel);
+                }
+            });
             Assert.Equal("Url collection is empty", ex.Message);
         }
 
@@ -132,6 +155,27 @@ namespace ArnabDeveloper.HtmlContent.CoreTests
                 Assert.NotNull(webSiteDataModel.WebsiteData);
                 Assert.True(webSiteDataModel.WebsiteData.Length != 0);
             }
+        }
+
+        private void CheckProgressResult(ProgressDataModel progressDataModel)
+        {
+            Assert.True(progressDataModel.ProgressValue != 0);
+            Assert.NotNull(progressDataModel.Data);
+            Assert.True(progressDataModel.Data!.WebsiteData.Length != 0);
+            Assert.NotNull(progressDataModel.Data!.WebsiteUrl);
+            Assert.True
+            (
+                progressDataModel.Data!.WebsiteUrl == "http://google.com" ||
+                progressDataModel.Data!.WebsiteUrl == "http://microsoft.com" ||
+                progressDataModel.Data!.WebsiteUrl == "http://github.com" ||
+                progressDataModel.Data!.WebsiteUrl == "http://bitbucket.com" ||
+                progressDataModel.Data!.WebsiteUrl == "http://gmail.com" ||
+                progressDataModel.Data!.WebsiteUrl == "http://office.com" ||
+                progressDataModel.Data!.WebsiteUrl == "http://outlook.com" ||
+                progressDataModel.Data!.WebsiteUrl == "http://www.businessinsider.com"
+            );
+            Assert.NotNull(progressDataModel.Data!.WebsiteData);
+            Assert.True(progressDataModel.Data!.WebsiteData.Length != 0);
         }
     }
 }
