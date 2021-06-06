@@ -19,5 +19,7 @@ namespace ArnabDeveloper.HtmlContent.Core.Services
 
         Task<IEnumerable<WebSiteDataModel>> GetContentParallelAsyncV2WithProgress(
             IProgress<ProgressDataModel> progress);
+
+        IAsyncEnumerable<ProgressDataModel> GetContentParallelAsyncV2WithAsyncStream();
     }
 }

@@ -139,6 +139,29 @@ namespace ArnabDeveloper.HtmlContent.Core.Services
             return webSiteDataModels;
         }
 
+        /// <summary>
+        /// Same as GetContentParallelAsyncV2WithProgress() but with async stream.
+        /// </summary>
+        async IAsyncEnumerable<ProgressDataModel> IHtmlContentService.GetContentParallelAsyncV2WithAsyncStream()
+        {
+            if (!((IHtmlContentService)this).Urls.Any())
+            {
+                throw new ArgumentException("Url collection is empty");
+            }
+
+            List<WebSiteDataModel> webSiteDataModels = new();
+            foreach (string url in ((IHtmlContentService)this).Urls)
+            {
+                WebSiteDataModel webSiteDataModel = await DownloadStringTaskAsync(url);
+                webSiteDataModels.Add(webSiteDataModel);
+
+                int progressPercentage = webSiteDataModels.Count * 100 / ((IHtmlContentService)this).Urls.Count;
+                ProgressDataModel progressDataModel = new(progressPercentage, webSiteDataModel);
+
+                yield return progressDataModel;
+            }
+        }
+
         private WebSiteDataModel DownloadString(string url)
         {
             using WebClient webClient = new();
