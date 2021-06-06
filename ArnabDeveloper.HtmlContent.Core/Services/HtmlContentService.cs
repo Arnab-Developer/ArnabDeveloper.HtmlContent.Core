@@ -140,7 +140,7 @@ namespace ArnabDeveloper.HtmlContent.Core.Services
         }
 
         /// <summary>
-        /// Same as GetContentParallelAsyncV2WithProgress() but with async stream.
+        /// Use of async stream.
         /// </summary>
         async IAsyncEnumerable<ProgressDataModel> IHtmlContentService.GetContentParallelAsyncV2WithAsyncStream()
         {

@@ -30,6 +30,7 @@ There are five methods to get the HTML responses.
 with `Parallel.ForEach()`
 - `GetContentParallelAsyncV2WithProgress()` to get HTML responses asynchronously 
 in parallel with `Parallel.ForEach()` with progress notification
+- `GetContentParallelAsyncV2WithAsyncStream()` use of async stream
 
 ## Tech stack
 
