@@ -23,14 +23,12 @@ dotnet add package ArnabDeveloper.HtmlContent.Core
 
 There are five methods to get the HTML responses.
 
-- `GetContent()` to get HTML responses synchronously
-- `GetContentAsync()` to get HTML responses asynchronously
-- `GetContentParallelAsync` to get HTML responses asynchronously in parallel
-- `GetContentParallelAsyncV2()` to get HTML responses asynchronously in parallel 
-with `Parallel.ForEach()`
-- `GetContentParallelAsyncV2WithProgress()` to get HTML responses asynchronously 
-in parallel with `Parallel.ForEach()` with progress notification
-- `GetContentParallelAsyncV2WithAsyncStream()` use of async stream
+- `GetContent()` get html contents synchronously
+- `GetContentAsync()` get html contents asynchronously
+- `GetContentAsyncStream()` get html contents asynchronously but start to return contents as they are ready before all are complete
+- `GetContentParallelAsync()` get html contents asynchronously in parallel
+- `GetContentParallelForEachAsync()` get html contents asynchronously in parallel using `Parallel.ForEach()`
+- `GetContentParallelForEachProgressAsync()` get html contents asynchronously in parallel using 'Parallel.ForEach()' and start to return contents as they are ready before all are complete with progress data.
 
 ## Tech stack
 
