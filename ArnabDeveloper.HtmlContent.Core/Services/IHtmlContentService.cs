@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace ArnabDeveloper.HtmlContent.Core.Services
 {
+    /// <summary>
+    /// Get html contents.
+    /// </summary>
     public interface IHtmlContentService
     {
         /// <summary>
