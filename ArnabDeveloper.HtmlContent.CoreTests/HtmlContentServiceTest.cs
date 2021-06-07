@@ -47,6 +47,31 @@ namespace ArnabDeveloper.HtmlContent.CoreTests
         }
 
         [Fact]
+        public async void Can_GetContentAsyncStream_ReturnProperData()
+        {
+            AddUrls();
+            await foreach (ProgressDataModel progressDataModel in
+                _htmlContentService.GetContentAsyncStream())
+            {
+                CheckProgressResult(progressDataModel);
+            }
+        }
+
+        [Fact]
+        public async void Can_GetContentAsyncStream_ThrowExceptionIfUrlIsEmpty()
+        {
+            ArgumentException ex = await Assert.ThrowsAsync<ArgumentException>(async () =>
+            {
+                await foreach (ProgressDataModel progressDataModel in
+                    _htmlContentService.GetContentAsyncStream())
+                {
+                    CheckProgressResult(progressDataModel);
+                }
+            });
+            Assert.Equal("Url collection is empty", ex.Message);
+        }
+
+        [Fact]
         public async void Can_GetContentParallelAsync_ReturnProperData()
         {
             AddUrls();
@@ -62,22 +87,22 @@ namespace ArnabDeveloper.HtmlContent.CoreTests
         }
 
         [Fact]
-        public async void Can_GetContentParallelAsyncV2_ReturnProperData()
+        public async void Can_GetContentParallelForEachAsync_ReturnProperData()
         {
             AddUrls();
-            IEnumerable<WebSiteDataModel> webSiteDataModels = await _htmlContentService.GetContentParallelAsyncV2();
+            IEnumerable<WebSiteDataModel> webSiteDataModels = await _htmlContentService.GetContentParallelForEachAsync();
             CheckResults(webSiteDataModels);
         }
 
         [Fact]
-        public async void Can_GetContentParallelAsyncV2_ThrowExceptionIfUrlIsEmpty()
+        public async void Can_GetContentParallelForEachAsync_ThrowExceptionIfUrlIsEmpty()
         {
-            ArgumentException ex = await Assert.ThrowsAsync<ArgumentException>(() => _htmlContentService.GetContentParallelAsyncV2());
+            ArgumentException ex = await Assert.ThrowsAsync<ArgumentException>(() => _htmlContentService.GetContentParallelForEachAsync());
             Assert.Equal("Url collection is empty", ex.Message);
         }
 
         [Fact]
-        public async void Can_GetContentParallelAsyncV2WithProgress_ReturnProperData()
+        public async void Can_GetContentParallelForEachProgressAsync_ReturnProperData()
         {
             AddUrls();
             Progress<ProgressDataModel> progress = new(progressDataModel =>
@@ -85,41 +110,16 @@ namespace ArnabDeveloper.HtmlContent.CoreTests
                 CheckProgressResult(progressDataModel);
             });
             IEnumerable<WebSiteDataModel> webSiteDataModels =
-                await _htmlContentService.GetContentParallelAsyncV2WithProgress(progress);
+                await _htmlContentService.GetContentParallelForEachProgressAsync(progress);
             CheckResults(webSiteDataModels);
         }
 
         [Fact]
-        public async void Can_GetContentParallelAsyncV2WithProgress_ThrowExceptionIfUrlIsEmpty()
+        public async void Can_GetContentParallelForEachProgressAsync_ThrowExceptionIfUrlIsEmpty()
         {
             Progress<ProgressDataModel> progress = new();
             ArgumentException ex = await Assert.ThrowsAsync<ArgumentException>(
-                () => _htmlContentService.GetContentParallelAsyncV2WithProgress(progress));
-            Assert.Equal("Url collection is empty", ex.Message);
-        }
-
-        [Fact]
-        public async void Can_GetContentParallelAsyncV2WithAsyncStream_ReturnProperData()
-        {
-            AddUrls();
-            await foreach (ProgressDataModel progressDataModel in
-                _htmlContentService.GetContentParallelAsyncV2WithAsyncStream())
-            {
-                CheckProgressResult(progressDataModel);
-            }
-        }
-
-        [Fact]
-        public async void Can_GetContentParallelAsyncV2WithAsyncStream_ThrowExceptionIfUrlIsEmpty()
-        {
-            ArgumentException ex = await Assert.ThrowsAsync<ArgumentException>(async () =>
-            {
-                await foreach (ProgressDataModel progressDataModel in
-                    _htmlContentService.GetContentParallelAsyncV2WithAsyncStream())
-                {
-                    CheckProgressResult(progressDataModel);
-                }
-            });
+                () => _htmlContentService.GetContentParallelForEachProgressAsync(progress));
             Assert.Equal("Url collection is empty", ex.Message);
         }
 
