@@ -11,8 +11,8 @@
     <PackageProjectUrl>https://github.com/Arnab-Developer/ArnabDeveloper.HtmlContent.Core</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Arnab-Developer/ArnabDeveloper.HtmlContent.Core</RepositoryUrl>
     <PackageTags>async,await,http,html</PackageTags>
-    <PackageReleaseNotes>Add async stream functionality</PackageReleaseNotes>
-    <Version>1.0.2</Version>
+    <PackageReleaseNotes>Use better method name and xml documentation</PackageReleaseNotes>
+    <Version>1.0.3</Version>
   </PropertyGroup>
 
 </Project>
