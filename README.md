@@ -25,10 +25,14 @@ There are five methods to get the HTML responses.
 
 - `GetContent()` get html contents synchronously
 - `GetContentAsync()` get html contents asynchronously
-- `GetContentAsyncStream()` get html contents asynchronously but start to return contents as they are ready before all are complete
+- `GetContentAsyncStream()` get html contents asynchronously but start to return 
+contents as they are ready before all are complete
 - `GetContentParallelAsync()` get html contents asynchronously in parallel
-- `GetContentParallelForEachAsync()` get html contents asynchronously in parallel using `Parallel.ForEach()`
-- `GetContentParallelForEachProgressAsync()` get html contents asynchronously in parallel using 'Parallel.ForEach()' and start to return contents as they are ready before all are complete with progress data.
+- `GetContentParallelForEachAsync()` get html contents asynchronously in parallel 
+using `Parallel.ForEach()`
+- `GetContentParallelForEachProgressAsync()` get html contents asynchronously in 
+parallel using 'Parallel.ForEach()' and start to return contents as they are ready 
+before all are complete with progress data.
 
 ## Tech stack
 
