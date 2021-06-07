@@ -31,7 +31,7 @@ contents as they are ready before all are complete
 - `GetContentParallelForEachAsync()` get html contents asynchronously in parallel 
 using `Parallel.ForEach()`
 - `GetContentParallelForEachProgressAsync()` get html contents asynchronously in 
-parallel using 'Parallel.ForEach()' and start to return contents as they are ready 
+parallel using `Parallel.ForEach()` and start to return contents as they are ready 
 before all are complete with progress data.
 
 ## Tech stack
