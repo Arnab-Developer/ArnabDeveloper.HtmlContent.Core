@@ -21,9 +21,6 @@ namespace ArnabDeveloper.HtmlContent.Core.Services
             _urls = new List<string>();
         }
 
-        /// <summary>
-        /// Blocks the UI thread.
-        /// </summary>
         IEnumerable<WebSiteDataModel> IHtmlContentService.GetContent()
         {
             if (!((IHtmlContentService)this).Urls.Any())
@@ -40,9 +37,6 @@ namespace ArnabDeveloper.HtmlContent.Core.Services
             return webSiteDataModels;
         }
 
-        /// <summary>
-        /// Same time took as GetContent() but do not block the UI thread.
-        /// </summary>
         async Task<IEnumerable<WebSiteDataModel>> IHtmlContentService.GetContentAsync()
         {
             if (!((IHtmlContentService)this).Urls.Any())
@@ -59,10 +53,26 @@ namespace ArnabDeveloper.HtmlContent.Core.Services
             return webSiteDataModels;
         }
 
-        /// <summary>
-        /// Much faster than GetContent() and GetContentAsync() because 
-        /// works in parallel and do not block the UI thread.
-        /// </summary>
+        async IAsyncEnumerable<ProgressDataModel> IHtmlContentService.GetContentAsyncStream()
+        {
+            if (!((IHtmlContentService)this).Urls.Any())
+            {
+                throw new ArgumentException("Url collection is empty");
+            }
+
+            List<WebSiteDataModel> webSiteDataModels = new();
+            foreach (string url in ((IHtmlContentService)this).Urls)
+            {
+                WebSiteDataModel webSiteDataModel = await DownloadStringTaskAsync(url);
+                webSiteDataModels.Add(webSiteDataModel);
+
+                int progressPercentage = webSiteDataModels.Count * 100 / ((IHtmlContentService)this).Urls.Count;
+                ProgressDataModel progressDataModel = new(progressPercentage, webSiteDataModel);
+
+                yield return progressDataModel;
+            }
+        }
+
         async Task<IEnumerable<WebSiteDataModel>> IHtmlContentService.GetContentParallelAsync()
         {
             if (!((IHtmlContentService)this).Urls.Any())
@@ -87,7 +97,7 @@ namespace ArnabDeveloper.HtmlContent.Core.Services
         /// wait the UI thread. So normal method needs to be used inside 
         /// Parallel.ForEach().
         /// </summary>
-        async Task<IEnumerable<WebSiteDataModel>> IHtmlContentService.GetContentParallelAsyncV2()
+        async Task<IEnumerable<WebSiteDataModel>> IHtmlContentService.GetContentParallelForEachAsync()
         {
             if (!((IHtmlContentService)this).Urls.Any())
             {
@@ -113,10 +123,7 @@ namespace ArnabDeveloper.HtmlContent.Core.Services
             return webSiteDataModels;
         }
 
-        /// <summary>
-        /// Same as GetContentParallelAsyncV2() but with progress notification.
-        /// </summary>
-        async Task<IEnumerable<WebSiteDataModel>> IHtmlContentService.GetContentParallelAsyncV2WithProgress(
+        async Task<IEnumerable<WebSiteDataModel>> IHtmlContentService.GetContentParallelForEachProgressAsync(
             IProgress<ProgressDataModel> progress)
         {
             if (!((IHtmlContentService)this).Urls.Any())
@@ -137,29 +144,6 @@ namespace ArnabDeveloper.HtmlContent.Core.Services
             }));
 
             return webSiteDataModels;
-        }
-
-        /// <summary>
-        /// Use of async stream.
-        /// </summary>
-        async IAsyncEnumerable<ProgressDataModel> IHtmlContentService.GetContentParallelAsyncV2WithAsyncStream()
-        {
-            if (!((IHtmlContentService)this).Urls.Any())
-            {
-                throw new ArgumentException("Url collection is empty");
-            }
-
-            List<WebSiteDataModel> webSiteDataModels = new();
-            foreach (string url in ((IHtmlContentService)this).Urls)
-            {
-                WebSiteDataModel webSiteDataModel = await DownloadStringTaskAsync(url);
-                webSiteDataModels.Add(webSiteDataModel);
-
-                int progressPercentage = webSiteDataModels.Count * 100 / ((IHtmlContentService)this).Urls.Count;
-                ProgressDataModel progressDataModel = new(progressPercentage, webSiteDataModel);
-
-                yield return progressDataModel;
-            }
         }
 
         private WebSiteDataModel DownloadString(string url)
