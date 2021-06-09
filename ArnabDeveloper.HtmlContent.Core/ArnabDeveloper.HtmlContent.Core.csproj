@@ -11,8 +11,8 @@
     <PackageProjectUrl>https://github.com/Arnab-Developer/ArnabDeveloper.HtmlContent.Core</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Arnab-Developer/ArnabDeveloper.HtmlContent.Core</RepositoryUrl>
     <PackageTags>async,await,http,html</PackageTags>
-    <PackageReleaseNotes>Fix a bug 'XML comments not showing'</PackageReleaseNotes>
-    <Version>1.0.4</Version>
+    <PackageReleaseNotes>Write XML comments for all public types and members</PackageReleaseNotes>
+    <Version>1.0.5</Version>
   </PropertyGroup>
 
   <PropertyGroup>
