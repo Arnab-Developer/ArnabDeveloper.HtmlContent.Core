@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace ArnabDeveloper.HtmlContent.Core.Services
 {
+    /// <inheritdoc cref="IHtmlContentService"/>
     public class HtmlContentService : IHtmlContentService
     {
         private IList<string> _urls;
@@ -16,6 +17,9 @@ namespace ArnabDeveloper.HtmlContent.Core.Services
             set => _urls = value;
         }
 
+        /// <summary>
+        /// Creates a new object of HtmlContentService.
+        /// </summary>
         public HtmlContentService()
         {
             _urls = new List<string>();
