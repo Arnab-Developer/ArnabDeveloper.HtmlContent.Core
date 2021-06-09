@@ -5,7 +5,7 @@
     </assembly>
     <members>
         <member name="T:ArnabDeveloper.HtmlContent.Core.Services.HtmlContentService">
-            <inheritdoc/>
+            <inheritdoc cref="T:ArnabDeveloper.HtmlContent.Core.Services.IHtmlContentService"/>
         </member>
         <member name="M:ArnabDeveloper.HtmlContent.Core.Services.HtmlContentService.#ctor">
             <summary>
