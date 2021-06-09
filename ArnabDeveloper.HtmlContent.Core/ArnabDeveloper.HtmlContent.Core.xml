@@ -4,6 +4,26 @@
         <name>ArnabDeveloper.HtmlContent.Core</name>
     </assembly>
     <members>
+        <member name="T:ArnabDeveloper.HtmlContent.Core.Models.ProgressDataModel">
+            <summary>
+            Progress data model
+            </summary>
+        </member>
+        <member name="M:ArnabDeveloper.HtmlContent.Core.Models.ProgressDataModel.#ctor(System.Int32,ArnabDeveloper.HtmlContent.Core.Models.WebSiteDataModel)">
+            <summary>
+            Progress data model
+            </summary>
+        </member>
+        <member name="T:ArnabDeveloper.HtmlContent.Core.Models.WebSiteDataModel">
+            <summary>
+            Web site data model
+            </summary>
+        </member>
+        <member name="M:ArnabDeveloper.HtmlContent.Core.Models.WebSiteDataModel.#ctor(System.String,System.String)">
+            <summary>
+            Web site data model
+            </summary>
+        </member>
         <member name="T:ArnabDeveloper.HtmlContent.Core.Services.HtmlContentService">
             <inheritdoc cref="T:ArnabDeveloper.HtmlContent.Core.Services.IHtmlContentService"/>
         </member>
