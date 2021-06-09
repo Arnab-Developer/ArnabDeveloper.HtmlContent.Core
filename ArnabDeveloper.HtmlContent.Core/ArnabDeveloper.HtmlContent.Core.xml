@@ -4,6 +4,14 @@
         <name>ArnabDeveloper.HtmlContent.Core</name>
     </assembly>
     <members>
+        <member name="T:ArnabDeveloper.HtmlContent.Core.Services.HtmlContentService">
+            <inheritdoc/>
+        </member>
+        <member name="M:ArnabDeveloper.HtmlContent.Core.Services.HtmlContentService.#ctor">
+            <summary>
+            Creates a new object of HtmlContentService.
+            </summary>
+        </member>
         <member name="M:ArnabDeveloper.HtmlContent.Core.Services.HtmlContentService.ArnabDeveloper#HtmlContent#Core#Services#IHtmlContentService#GetContentParallelForEachAsync">
             <summary>
             Do not block the UI thread because it is inside Task.Run() otherwise
