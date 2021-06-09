@@ -11,8 +11,12 @@
     <PackageProjectUrl>https://github.com/Arnab-Developer/ArnabDeveloper.HtmlContent.Core</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Arnab-Developer/ArnabDeveloper.HtmlContent.Core</RepositoryUrl>
     <PackageTags>async,await,http,html</PackageTags>
-    <PackageReleaseNotes>Use better method name and xml documentation</PackageReleaseNotes>
-    <Version>1.0.3</Version>
+    <PackageReleaseNotes>Fix a bug 'XML comments not showing'</PackageReleaseNotes>
+    <Version>1.0.4</Version>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DocumentationFile>ArnabDeveloper.HtmlContent.Core.xml</DocumentationFile>
   </PropertyGroup>
 
 </Project>

@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ArnabDeveloper.HtmlContent.Core</name>
+    </assembly>
+    <members>
+        <member name="M:ArnabDeveloper.HtmlContent.Core.Services.HtmlContentService.ArnabDeveloper#HtmlContent#Core#Services#IHtmlContentService#GetContentParallelForEachAsync">
+            <summary>
+            Do not block the UI thread because it is inside Task.Run() otherwise
+            it block UI thread. Same fast as GetContentParallelAsync() because it
+            works in parallel. Async operation inside Parallel.ForEach() is not 
+            wait the UI thread. So normal method needs to be used inside 
+            Parallel.ForEach().
+            </summary>
+        </member>
+        <member name="T:ArnabDeveloper.HtmlContent.Core.Services.IHtmlContentService">
+            <summary>
+            Get html contents.
+            </summary>
+        </member>
+        <member name="P:ArnabDeveloper.HtmlContent.Core.Services.IHtmlContentService.Urls">
+            <summary>
+            Collection of urls to get contents.
+            </summary>
+        </member>
+        <member name="M:ArnabDeveloper.HtmlContent.Core.Services.IHtmlContentService.GetContent">
+            <summary>
+            Get html contents synchronously.
+            </summary>
+            <returns>Collection of WebSiteDataModel.</returns>
+            <exception cref="T:System.ArgumentException">
+            Throws ArgumentException if urls is empty.
+            </exception>
+        </member>
+        <member name="M:ArnabDeveloper.HtmlContent.Core.Services.IHtmlContentService.GetContentAsync">
+            <summary>
+            Get html contents asynchronously.
+            </summary>
+            <returns>A task having a collection of WebSiteDataModel.</returns>
+            <exception cref="T:System.ArgumentException">
+            Throws ArgumentException if urls is empty.
+            </exception>
+        </member>
+        <member name="M:ArnabDeveloper.HtmlContent.Core.Services.IHtmlContentService.GetContentAsyncStream">
+            <summary>
+            Get html contents asynchronously but start to return contents 
+            as they are ready before all are complete.
+            </summary>
+            <returns>IAsyncEnumerable of ProgressDataModel.</returns>
+            <exception cref="T:System.ArgumentException">
+            Throws ArgumentException if urls is empty.
+            </exception>
+        </member>
+        <member name="M:ArnabDeveloper.HtmlContent.Core.Services.IHtmlContentService.GetContentParallelAsync">
+            <summary>
+            Get html contents asynchronously in parallel.
+            </summary>
+            <returns>Collection of WebSiteDataModel.</returns>
+            <exception cref="T:System.ArgumentException">
+            Throws ArgumentException if urls is empty.
+            </exception>
+        </member>
+        <member name="M:ArnabDeveloper.HtmlContent.Core.Services.IHtmlContentService.GetContentParallelForEachAsync">
+            <summary>
+            Get html contents asynchronously in parallel using 'Parallel.ForEach()'.
+            </summary>
+            <returns>Collection of WebSiteDataModel.</returns>
+            <exception cref="T:System.ArgumentException">
+            Throws ArgumentException if urls is empty.
+            </exception>
+        </member>
+        <member name="M:ArnabDeveloper.HtmlContent.Core.Services.IHtmlContentService.GetContentParallelForEachProgressAsync(System.IProgress{ArnabDeveloper.HtmlContent.Core.Models.ProgressDataModel})">
+            <summary>
+            Get html contents asynchronously in parallel using 'Parallel.ForEach()'
+            and start to return contents as they are ready before all are complete
+            with progress data.
+            </summary>
+            <returns>Collection of WebSiteDataModel.</returns>
+            <exception cref="T:System.ArgumentException">
+            Throws ArgumentException if urls is empty.
+            </exception>
+        </member>
+    </members>
+</doc>
