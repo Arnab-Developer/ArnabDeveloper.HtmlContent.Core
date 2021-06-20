@@ -33,19 +33,3 @@ using `Parallel.ForEach()`
 - `GetContentParallelForEachProgressAsync()` get html contents asynchronously in 
 parallel using `Parallel.ForEach()` and start to return contents as they are ready 
 before all are complete with progress data.
-
-## Tech stack
-
-- Visual Studio 2019
-- .NET 5
-- xUnit for unit test
-- NuGet for package hosting
-
-## License
-
-[MIT License](https://github.com/Arnab-Developer/ArnabDeveloper.HtmlContent.Core/blob/main/LICENSE)
-
-## Contributing
-
-Please read [this](https://github.com/Arnab-Developer/ArnabDeveloper.HtmlContent.Core/blob/main/CONTRIBUTING.md) 
-for contribution related guidelines.
