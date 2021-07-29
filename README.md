@@ -6,11 +6,6 @@
 It takes a collection of HTTP URLs and returns HTML responses of them. Internally
 it used `System.Net.WebClient` to get the HTML response of the URLs.
 
-This is influenced by
-[C# Advanced Async by TimCorey](https://www.youtube.com/watch?v=ZTKGRJy5P2M)
-
-## How to install
-
 This library has been hosted in 
 [NuGet](https://www.nuget.org/packages/ArnabDeveloper.HtmlContent.Core). 
 Use below command to install this in your .NET application.
@@ -18,8 +13,6 @@ Use below command to install this in your .NET application.
 ```
 dotnet add package ArnabDeveloper.HtmlContent.Core
 ```
-
-## How to use
 
 There are five methods to get the HTML responses.
 
@@ -33,3 +26,6 @@ using `Parallel.ForEach()`
 - `GetContentParallelForEachProgressAsync()` get html contents asynchronously in 
 parallel using `Parallel.ForEach()` and start to return contents as they are ready 
 before all are complete with progress data.
+
+This is influenced by
+[C# Advanced Async by TimCorey](https://www.youtube.com/watch?v=ZTKGRJy5P2M)
