@@ -129,7 +129,7 @@ namespace ArnabDeveloper.HtmlContent.CoreTests
             _htmlContentService.Urls.Add("http://gmail.com");
             _htmlContentService.Urls.Add("http://office.com");
             _htmlContentService.Urls.Add("http://outlook.com");
-            _htmlContentService.Urls.Add("http://www.businessinsider.com");
+            _htmlContentService.Urls.Add("http://timesofindia.indiatimes.com");
         }
 
         private void CheckResults(IEnumerable<WebSiteDataModel> webSiteDataModels)
@@ -147,7 +147,7 @@ namespace ArnabDeveloper.HtmlContent.CoreTests
                     webSiteDataModel.WebsiteUrl == "http://gmail.com" ||
                     webSiteDataModel.WebsiteUrl == "http://office.com" ||
                     webSiteDataModel.WebsiteUrl == "http://outlook.com" ||
-                    webSiteDataModel.WebsiteUrl == "http://www.businessinsider.com"
+                    webSiteDataModel.WebsiteUrl == "http://timesofindia.indiatimes.com"
                 );
                 Assert.NotNull(webSiteDataModel.WebsiteData);
                 Assert.True(webSiteDataModel.WebsiteData.Length != 0);
@@ -169,7 +169,7 @@ namespace ArnabDeveloper.HtmlContent.CoreTests
                 progressDataModel.Data!.WebsiteUrl == "http://gmail.com" ||
                 progressDataModel.Data!.WebsiteUrl == "http://office.com" ||
                 progressDataModel.Data!.WebsiteUrl == "http://outlook.com" ||
-                progressDataModel.Data!.WebsiteUrl == "http://www.businessinsider.com"
+                progressDataModel.Data!.WebsiteUrl == "http://timesofindia.indiatimes.com"
             );
             Assert.NotNull(progressDataModel.Data!.WebsiteData);
             Assert.True(progressDataModel.Data!.WebsiteData.Length != 0);
