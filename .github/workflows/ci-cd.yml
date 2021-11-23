@@ -31,6 +31,9 @@ jobs:
     - name: Test
       run: dotnet test --configuration ${{ env.CONFIGURATION }}
 
+    - name: Create nuget package
+      run: dotnet pack "ArnabDeveloper.HtmlContent.Core/ArnabDeveloper.HtmlContent.Core.csproj" --configuration ${{ env.CONFIGURATION }}
+
   github-nuget-push:
     if: ${{ github.event_name == 'push' || github.event_name == 'release' }}
     runs-on: ubuntu-latest
