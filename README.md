@@ -1,7 +1,13 @@
 # HTML content
 
-It takes a collection of HTTP URLs and returns HTML responses of them. Internally
+This is a library which takes a collection of HTTP URLs and returns HTML responses of them. Internally
 it used `System.Net.WebClient` to get the HTML response of the URLs.
+
+Install from NuGet.
+
+```
+dotnet add package ArnabDeveloper.HtmlContent.Core
+```
 
 There are five methods to get the HTML responses.
 
