@@ -3,7 +3,7 @@
 This is a library which takes a collection of HTTP URLs and returns HTML responses of them. Internally
 it used `System.Net.WebClient` to get the HTML response of the URLs.
 
-Install from NuGet.
+Install from [NuGet](https://www.nuget.org/packages/ArnabDeveloper.HtmlContent.Core).
 
 ```
 dotnet add package ArnabDeveloper.HtmlContent.Core
