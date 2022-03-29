@@ -11,8 +11,8 @@
     <PackageProjectUrl>https://github.com/Arnab-Developer/ArnabDeveloper.HtmlContent.Core</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Arnab-Developer/ArnabDeveloper.HtmlContent.Core</RepositoryUrl>
     <PackageTags>async,await,http,html</PackageTags>
-    <PackageReleaseNotes>Update nuget readme</PackageReleaseNotes>
-    <Version>1.0.8</Version>
+    <PackageReleaseNotes>Update nuget packages, codeql analysis, nuget config, update license</PackageReleaseNotes>
+    <Version>1.0.9</Version>
     <DocumentationFile>ArnabDeveloper.HtmlContent.Core.xml</DocumentationFile>
     <PackageReadmeFile>NuGetReadme.md</PackageReadmeFile>
     <IncludeSymbols>true</IncludeSymbols>
