@@ -120,6 +120,23 @@ public class HtmlContentServiceTest
         Assert.Equal("Url collection is empty", ex.Message);
     }
 
+    [Fact]
+    public void Can_Urls_ReturnProperData()
+    {
+        AddUrls();
+        IList<string> urls = _htmlContentService.Urls;
+
+        Assert.Equal(8, urls.Count);
+        Assert.Contains("http://google.com", urls);
+        Assert.Contains("http://microsoft.com", urls);
+        Assert.Contains("http://github.com", urls);
+        Assert.Contains("http://bitbucket.com", urls);
+        Assert.Contains("http://gmail.com", urls);
+        Assert.Contains("http://office.com", urls);
+        Assert.Contains("http://outlook.com", urls);
+        Assert.Contains("http://timesofindia.indiatimes.com", urls);
+    }
+
     private void AddUrls()
     {
         _htmlContentService.Urls.Add("http://google.com");
