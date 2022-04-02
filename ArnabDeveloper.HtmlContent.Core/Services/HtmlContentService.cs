@@ -148,14 +148,16 @@ public class HtmlContentService : IHtmlContentService
     private WebSiteDataModel DownloadString(string url)
     {
         using HttpClient httpClient = new();
-        WebSiteDataModel webSiteDataModel = new(url, httpClient.GetStringAsync(url).Result);
+        string websiteData = httpClient.GetStringAsync(url).Result;
+        WebSiteDataModel webSiteDataModel = new(url, websiteData);
         return webSiteDataModel;
     }
 
     private async Task<WebSiteDataModel> DownloadStringTaskAsync(string url)
     {
         using HttpClient httpClient = new();
-        WebSiteDataModel webSiteDataModel = new(url, await httpClient.GetStringAsync(url));
+        string websiteData = await httpClient.GetStringAsync(url);
+        WebSiteDataModel webSiteDataModel = new(url, websiteData);
         return webSiteDataModel;
     }
 }
