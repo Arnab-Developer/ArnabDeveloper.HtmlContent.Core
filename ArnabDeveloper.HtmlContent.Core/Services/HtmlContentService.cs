@@ -1,5 +1,4 @@
 ﻿using ArnabDeveloper.HtmlContent.Core.Models;
-using System.Net;
 
 namespace ArnabDeveloper.HtmlContent.Core.Services;
 
@@ -148,15 +147,15 @@ public class HtmlContentService : IHtmlContentService
 
     private WebSiteDataModel DownloadString(string url)
     {
-        using WebClient webClient = new();
-        WebSiteDataModel webSiteDataModel = new(url, webClient.DownloadString(url));
+        using HttpClient httpClient = new();
+        WebSiteDataModel webSiteDataModel = new(url, httpClient.GetStringAsync(url).Result);
         return webSiteDataModel;
     }
 
     private async Task<WebSiteDataModel> DownloadStringTaskAsync(string url)
     {
-        using WebClient webClient = new();
-        WebSiteDataModel webSiteDataModel = new(url, await webClient.DownloadStringTaskAsync(url));
+        using HttpClient httpClient = new();
+        WebSiteDataModel webSiteDataModel = new(url, await httpClient.GetStringAsync(url));
         return webSiteDataModel;
     }
 }
