@@ -39,7 +39,7 @@ public class HtmlContentServiceTest
     [Fact]
     public async void Can_GetContentAsync_ThrowExceptionIfUrlIsEmpty()
     {
-        ArgumentException ex = 
+        ArgumentException ex =
             await Assert.ThrowsAsync<ArgumentException>(() => _htmlContentService.GetContentAsync());
 
         Assert.Equal("Url collection is empty", ex.Message);
@@ -81,7 +81,7 @@ public class HtmlContentServiceTest
     [Fact]
     public async void Can_GetContentParallelAsync_ThrowExceptionIfUrlIsEmpty()
     {
-        ArgumentException ex = 
+        ArgumentException ex =
             await Assert.ThrowsAsync<ArgumentException>(() => _htmlContentService.GetContentParallelAsync());
 
         Assert.Equal("Url collection is empty", ex.Message);
@@ -98,7 +98,7 @@ public class HtmlContentServiceTest
     [Fact]
     public async void Can_GetContentParallelForEachAsync_ThrowExceptionIfUrlIsEmpty()
     {
-        ArgumentException ex = 
+        ArgumentException ex =
             await Assert.ThrowsAsync<ArgumentException>(() => _htmlContentService.GetContentParallelForEachAsync());
 
         Assert.Equal("Url collection is empty", ex.Message);
@@ -124,7 +124,7 @@ public class HtmlContentServiceTest
     {
         Progress<ProgressDataModel> progress = new();
 
-        ArgumentException ex = 
+        ArgumentException ex =
             await Assert.ThrowsAsync<ArgumentException>(
                 () => _htmlContentService.GetContentParallelForEachProgressAsync(progress));
 
