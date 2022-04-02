@@ -149,7 +149,6 @@ public class HtmlContentService : IHtmlContentService
     {
         using HttpClient httpClient = new();
         string websiteData = httpClient.GetStringAsync(url).Result;
-
         WebSiteDataModel webSiteDataModel = new(url, websiteData);
         return webSiteDataModel;
     }
@@ -158,7 +157,6 @@ public class HtmlContentService : IHtmlContentService
     {
         using HttpClient httpClient = new();
         string websiteData = await httpClient.GetStringAsync(url);
-
         WebSiteDataModel webSiteDataModel = new(url, websiteData);
         return webSiteDataModel;
     }
